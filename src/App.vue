@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import TheNavigation from "@/components/TheNavigation.vue";
 import TheContent    from "@/components/TheContent.vue";
+import BreadCrumbs   from "@/components/BreadCrumbs.vue";
 
 </script>
 
 <template>
   <div class="wrapper">
-    <TheNavigation />
+    <BreadCrumbs />
     <TheContent>
       <router-view />
     </TheContent>
@@ -15,8 +15,7 @@ import TheContent    from "@/components/TheContent.vue";
 
 <style scoped>
 .wrapper {
-  padding-right: 216px;
-  padding-left:  216px;
+  padding: 32px 216px 0 216px;
 }
 @media (min-width: 1024px) {
 

@@ -1,15 +1,10 @@
 <script setup lang="ts">
-
 </script>
+
 <template>
-  <h1>
-    Системы хранения
-  </h1>
+  item
 </template>
 
-<script>
-
-</script>
 
 <style scoped>
 
