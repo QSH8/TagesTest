@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Home               from '../views/Home.vue'
-import StorageSystems     from "@/views/StorageSystems.vue";
-import TheBody from "@/components/storageSystems/shelvingSystemKits/TheBody.vue";
+import Home            from '../views/Home.vue'
+import StorageSystems  from "../views/StorageSystems.vue";
+import TheBody         from "../components/storageSystems/shelvingSystemKits/TheBody.vue";
 
 
 export default createRouter({

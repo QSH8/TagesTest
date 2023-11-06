@@ -16,7 +16,7 @@ export default createStore({
         ajaxGet: async (context, params) => {
             await axios.get(params)
                 .then(response => {
-                    return response
+                    return response.data
                 })
                 .catch(err => console.log(err))
         },
