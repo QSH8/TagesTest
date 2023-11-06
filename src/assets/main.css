@@ -2,5 +2,20 @@
 
 @font-face {
     font-family: 'SF-UI-Text-regular';
-    src: url("../fonts/SFUIText-Regular.ttf");
+    src: url("../fonts/SFUIText/SFUIText-Regular.ttf");
+}
+
+@font-face {
+    font-family: 'SF-UI-Text-medium';
+    src: url("../fonts/SFUIText/SFUIText-Medium.ttf");
+}
+
+@font-face {
+    font-family: 'SF-ProDisplay-regular';
+    src: url("../fonts/SFProDisplay/SF-Pro-Display-Regular.otf");
+}
+
+@font-face {
+    font-family: 'SF-ProDisplay-medium';
+    src: url("../fonts/SFProDisplay/SF-Pro-Display-Medium.otf");
 }
