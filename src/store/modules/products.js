@@ -169,27 +169,22 @@ const products = {
 
     actions: {
         /**
-         * Запрашивает элементы списка товаров и заполняет store
+         * Запрашивает данные по текущему роуту с соответствующего обработчика на backend(е)
          * @param context
          * @param params
          * @return {Promise<void>}
          */
-        fetchItems: async (context, params) => {
-            let items = await context.dispatch('ajaxGet', params, {root: true});
-            context.commit('SET_ALL_ITEMS', items);
+        fetchData: async (context, params) => {
+            let data = await context.dispatch('ajaxGet', params, {root: true});
+            if (data === undefined) return;
+
+            context.commit('SET_ALL_ITEMS',     data.items);
+            context.commit('SET_ALL_MATERIALS', data.materials);
         },
 
-        /**
-         * Запрашивает элементы списка материалов и заполняет store
-         * @param context
-         * @param params
-         * @return {Promise<void>}
-         */
-        fetchMaterials: async (context, params) => {
-            let items = await context.dispatch('ajaxGet', params, {root: true});
-            context.commit('SET_ALL_MATERIALS', items);
-        },
     },
+
+    namespaced: true,
 }
 
 export default products;
