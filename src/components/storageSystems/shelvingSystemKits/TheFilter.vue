@@ -55,4 +55,10 @@ export default defineComponent({
    gap: 24px;
 
  }
+
+ @media  (max-width: 992px) {
+   .filter {
+     flex-direction: column;
+   }
+ }
 </style>

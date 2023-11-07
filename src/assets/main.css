@@ -1,5 +1,6 @@
 @import './base.css';
 
+/* FONTS */
 @font-face {
     font-family: 'SF-UI-Text-regular';
     src: url("../fonts/SFUIText/SFUIText-Regular.ttf");

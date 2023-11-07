@@ -15,9 +15,9 @@ import BreadCrumbs   from "@/components/BreadCrumbs.vue";
 
 <style scoped>
 .wrapper {
-  padding: 32px 216px 0 216px;
-}
-@media (min-width: 1024px) {
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
