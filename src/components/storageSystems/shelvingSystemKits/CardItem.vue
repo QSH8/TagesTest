@@ -10,19 +10,68 @@ export default defineComponent({
     }
   },
 
-  computed: {
-    hasDiscount(): boolean {
-      return !!this.item.price.old_price;
+  data() {
+    return {
+      isInCart:     false,
+      isInFavorite: false,
     }
   },
 
+  mounted() {
+    this.isInCart   = this.checkInStorage('cart');
+    this.isInFavorite = this.checkInStorage('favorite');
+  },
+
+
+  computed: {
+    /**
+     * Проверяет имеется ли старая цена (Указывает на наличие скидки)
+     */
+    hasDiscount(): boolean {
+      return !!this.item.price.old_price;
+    },
+  },
+
   methods: {
-    setToCart(id: number) {
-      console.log(id)
+    /**
+     * Проверяет, есть ли в корзине элемент с переданным id
+     */
+    checkInStorage(storageKey: string): boolean {
+      if (!localStorage[storageKey]) {
+        return false
+      } else {
+        return !!JSON.parse(localStorage[storageKey]).find((itemId: string) => itemId === this.item.id)
+      }
     },
 
-    setToFavorite(id: number) {
-      console.log(id)
+    /**
+     * Заносим новое значение в корзину
+     */
+    setToStorage(storageKey: string): void {
+      if (!localStorage[storageKey]) {
+        localStorage.setItem(storageKey, JSON.stringify([this.item.id]));
+      } else if (!this.checkInStorage(storageKey)) {
+        let storageItem: [] | string[] = JSON.parse(localStorage[storageKey]);
+
+        localStorage.setItem(storageKey, JSON.stringify([...storageItem, this.item.id]));
+      }
+
+      if (storageKey === 'cart')     this.isInCart     = true;
+      if (storageKey === 'favorite') this.isInFavorite = true;
+    },
+
+    /**
+     * Удаляет из корзины item, если он там есть (По кнопке с иконкой success (зелёная галочка)
+     */
+    removeFromStorage(storageKey: string): void {
+      if (localStorage[storageKey] && this.checkInStorage(storageKey)) {
+        let storageItem: [] | string[] = JSON.parse(localStorage[storageKey]);
+
+        localStorage.setItem(storageKey, JSON.stringify(storageItem.filter((itemId: string) => itemId !== this.item.id)));
+
+        if (storageKey === 'cart')     this.isInCart     = false;
+        if (storageKey === 'favorite') this.isInFavorite = false;
+      }
     },
   }
 })
@@ -41,10 +90,27 @@ export default defineComponent({
     </div>
 
     <div class="card-item__action-buttons">
-      <button type="button" @click="setToCart(item.id)" class="card-item__action-cart">
+
+      <button v-if="isInCart" @click="removeFromStorage('cart')"
+              type="button" class="card-item__action-success"
+      >
+        <img src="../../../assets/icons/success.svg" alt="">
+       </button>
+      <button v-else @click="setToStorage('cart')"
+              type="button" class="card-item__action-cart"
+      >
         <img src="../../../assets/icons/cart.svg" alt="">
       </button>
-      <button type="button" @click="setToFavorite(item.id)" class="card-item__action-favorite">
+
+
+      <button v-if="isInFavorite" @click="removeFromStorage('favorite')"
+              type="button"  class="card-item__action-favorite active"
+      >
+        <img src="../../../assets/icons/heart.svg" alt="">
+      </button>
+      <button v-else  @click="setToStorage('favorite')"
+              type="button" class="card-item__action-favorite"
+      >
         <img src="../../../assets/icons/heart.svg" alt="">
       </button>
     </div>
@@ -119,7 +185,11 @@ export default defineComponent({
     right: 14px;
   }
 
-  .card-item__action-cart {
+  .card-item__action-cart, .card-item__action-success {
     margin-right: 11px;
+  }
+  .card-item__action-favorite.active {
+    border-radius: 50%;
+    box-shadow: rgba(0,0,0,0.5) 0 0 5px 1px;
   }
 </style>

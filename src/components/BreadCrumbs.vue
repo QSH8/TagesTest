@@ -1,6 +1,3 @@
-<!-- Данный компонент только отображает конкретный путь,
-     но не даёт возможности перехода по "хлебным крошкам"
--->
 <script lang="ts">
   import {defineComponent} from "vue";
 
@@ -52,13 +49,14 @@
 <template>
   <nav class="navigation">
     <template v-if="routes">
-      <span
+      <router-link
+          :to="route.path"
           v-for="(route, key) in routes" :key="key"
           class="navigation__link"
           :class="getExactClass(key)"
       >
         {{ route.name + getSeparator(key) }}
-      </span>
+      </router-link>
     </template>
   </nav>
 </template>

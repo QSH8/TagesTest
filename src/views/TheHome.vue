@@ -2,20 +2,21 @@
 import {defineComponent} from "vue";
 
 export default defineComponent({
-  name: "StorageSystems",
+  name: "TheHome",
 })
 </script>
 <template>
   <h1>
-    Системы хранения
+    Главная
   </h1>
 
   <h3>
     Реализовано подобие роутинга с визуальными breadcrubms
   </h3>
 
-  <router-link to="/systems/shelvingSystemKits">Переход на <b>Комплекты стеллажных систем</b></router-link>
+  <router-link to="/systems">Переход на <b>Системы Хранения</b></router-link>
 </template>
+
 
 <style scoped>
 
