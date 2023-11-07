@@ -21,7 +21,7 @@ const products = {
                     "current_price": 355
                 },
                 image: {
-                    url: "/pic/pic1.png"
+                    url: "/public/images/pic1.png"
                 },
                 material: 1
             },
@@ -34,7 +34,7 @@ const products = {
                     current_price: 355.555
                 },
                 image: {
-                    url: "/pic/pic2.png"
+                    url: "/public/images/pic2.png"
                 },
                 material: 2
             },
@@ -47,7 +47,7 @@ const products = {
                     current_price: 75
                 },
                 image: {
-                    url: "/pic/pic3.png"
+                    url: "/public/images/pic3.png"
                 },
                 material: 2
             },
@@ -60,7 +60,7 @@ const products = {
                     current_price: 200
                 },
                 image: {
-                    url: "/pic/pic4.png"
+                    url: "/public/images/pic4.png"
                 },
                 material: 2
             },
@@ -73,7 +73,7 @@ const products = {
                     current_price: 720
                 },
                 image: {
-                    url: "/pic/pic1.png"
+                    url: "/public/images/pic1.png"
                 },
                 material: 1
             },
@@ -86,7 +86,7 @@ const products = {
                     current_price: 355.555
                 },
                 image: {
-                    url: "/pic/pic2.png"
+                    url: "/public/images/pic2.png"
                 },
                 material: 2
             },
@@ -99,7 +99,7 @@ const products = {
                     current_price: 75
                 },
                 image: {
-                    url: "/pic/pic3.png"
+                    url: "/public/images/pic3.png"
                 },
                 material: 2
             },
@@ -112,11 +112,18 @@ const products = {
                     current_price: 900
                 },
                 image: {
-                    url: "/pic/pic4.png"
+                    url: "/public/images/pic4.png"
                 },
                 material: 2
             }
-        ]
+        ],
+        filters: {
+            material: 1,
+        },
+
+        sorts: {
+            price: 'ascend'
+        },
     }),
 
     getters: {
@@ -155,15 +162,63 @@ const products = {
         getMaterial: (state) => (id) => {
             return state.items.find(item => item.id === id);
         },
+
+        /**
+         * Геттер для получения значения фильтра
+         * @param state
+         */
+        getFilter: (state) => (filter_id) => {
+            return state.filters[filter_id];
+        },
+
+        /**
+         * Геттер для получения значения сортировки
+         * @param state
+         */
+        getSort: (state) => (sort_id) => {
+            return state.sorts[sort_id];
+        }
     },
 
     mutations: {
-        SET_ALL_ITEMS: (state, payload) => {
-            state.items = payload;
+        /**
+         * Сеттер для заполнения списка товаров
+         * @param state
+         * @param items
+         * @constructor
+         */
+        SET_ALL_ITEMS: (state, items) => {
+            state.items = items;
         },
 
-        SET_ALL_MATERIALS: (state, payload) => {
-            state.materials = payload;
+        /**
+         * Сеттер для заполнения списка материалов
+         * @param state
+         * @param items
+         * @constructor
+         */
+        SET_ALL_MATERIALS: (state, materials) => {
+            state.materials = materials;
+        },
+
+        /**
+         * Устанавливает новое значение для фильтра
+         * @param state
+         * @param filter
+         * @constructor
+         */
+        SET_FILTER: (state, filter) => {
+            state.filters[filter.id] = filter.value;
+        },
+
+        /**
+         * Устанавливает новое значение для сортировки
+         * @param state
+         * @param sort
+         * @constructor
+         */
+        SET_SORT: (state, sort) => {
+            state.sorts[sort.id] = sort.value;
         },
     },
 

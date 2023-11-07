@@ -10,26 +10,41 @@ export default defineComponent({
     }
   },
 
+  computed: {
+    hasDiscount(): boolean {
+      return !!this.item.price.old_price;
+    }
+  },
+
+  methods: {
+    setToCart(id: number) {
+      console.log(id)
+    },
+
+    setToFavorite(id: number) {
+      console.log(id)
+    },
+  }
 })
 </script>
 <template>
   <div class="card-list__item">
-    <p class="sale-label">Скидка</p>
-    <img class="card-list__item-img" src="/public/images/img1.png" alt="NO IMG(">
-    <div class="card-list__item-code">L244WH</div>
-    <div class="card-list__item-name">Ручка дверная</div>
+    <p v-if="hasDiscount" class="sale-label">Скидка</p>
+    <img class="card-list__item-img" :src="item.image.url" alt="NO IMG(">
+    <div class="card-list__item-code">{{ item.code }}</div>
+    <div class="card-list__item-name">{{ item.name }}</div>
 
     <div class="card-list__item-price">
-      <span class="card-list__item-price-old">400P</span>
+      <span v-if="hasDiscount" class="card-list__item-price-old">{{ item.price.old_price }}</span>
       {{ '' }}
-      <span class="card-list__item-price-new">355P</span>
+      <span class="card-list__item-price-new">{{ item.price.current_price }}</span>
     </div>
 
     <div class="card-item__action-buttons">
-      <button class="card-item__action-cart">
+      <button type="button" @click="setToCart(item.id)" class="card-item__action-cart">
         <img src="../../../assets/icons/cart.svg" alt="">
       </button>
-      <button class="card-item__action-favorite">
+      <button type="button" @click="setToFavorite(item.id)" class="card-item__action-favorite">
         <img src="../../../assets/icons/heart.svg" alt="">
       </button>
     </div>

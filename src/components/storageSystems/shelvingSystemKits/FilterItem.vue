@@ -1,27 +1,53 @@
 <script lang="ts">
 import {defineComponent} from "vue";
+import {mapGetters, mapMutations} from "vuex";
 
 export default defineComponent({
   name: 'FilterItem',
+
+  computed: {
+    ...mapGetters({
+      getFilter: "products/getFilter",
+    }),
+
+    filter: {
+      get(): number {
+        return this.getFilter('material')
+      },
+
+      set(new_filter: number) {
+        this.setFilter({id: 'material', value: new_filter})
+      }
+    }
+  },
+
+
+  methods: {
+    ...mapMutations({
+      setFilter: 'products/SET_FILTER'
+    }),
+  },
+
+
 
   props: {
     title: {
       type: String,
       required: true,
+    },
+    options: {
+      type: Array,
+      required: true,
     }
   },
-
-
 })
 </script>
 
 <template>
   <div class="filter__item">
     <p class="filter__item-title">{{ title }}</p>
-    <select name="filter__item-select" id="filter__item-select">
-      <option :value="''"></option>
-      <option :value="'some'">some</option>
-      <option :value="'shit'">shit</option>
+    <select name="filter__item-select" id="filter__item-select" v-model="filter">
+      <option v-for="(value, key) in options" :key="key" :value="value.id">{{ value.name }}</option>
     </select>
   </div>
 </template>
