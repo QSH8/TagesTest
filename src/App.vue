@@ -15,16 +15,10 @@ import BreadCrumbs   from "@/components/BreadCrumbs.vue";
 
 <style scoped>
 .wrapper {
-  padding-top: 32px;
+  padding: 32px 0 0 216px;
+
   min-width: 380px;
   max-width: 1488px;
-}
-
-
-@media (max-width: 1700px) {
-  .wrapper {
-    padding: 32px 0 0 216px;
-  }
 }
 
 @media (max-width: 992px) {
