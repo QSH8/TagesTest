@@ -77,7 +77,7 @@ export default defineComponent({
 })
 </script>
 <template>
-  <div class="card-list__item">
+  <div class="card-list__item" :id="item.id">
     <p v-if="hasDiscount" class="sale-label">Скидка</p>
     <img class="card-list__item-img" :src="item.image.url" alt="NO IMG(">
     <div class="card-list__item-code">{{ item.code }}</div>
@@ -121,6 +121,7 @@ export default defineComponent({
   .card-list__item {
     position: relative;
     width: 336px;
+    min-height: 352px;
     outline: 1px solid #EEEEEE;
   }
 
@@ -139,11 +140,13 @@ export default defineComponent({
   }
 
   .card-list__item-img {
-    padding: 9px 49px 24px 49px;
+    padding: 9px 49px 23px 49px;
+    min-height: 269px;
   }
 
   .card-list__item-code, .card-list__item-price-old {
     font-family: SF-UI-Text-regular;
+    min-height: 14px;
     width: fit-content;
     font-size: 10px;
     line-height: 140%;

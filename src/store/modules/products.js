@@ -1,3 +1,4 @@
+
 const products = {
     state: () => ({
         materials: [
@@ -21,7 +22,7 @@ const products = {
                     "current_price": 355
                 },
                 image: {
-                    url: "/public/images/pic1.png"
+                    url: "../pic/pic1.png"
                 },
                 material: 1
             },
@@ -34,7 +35,7 @@ const products = {
                     current_price: 355.555
                 },
                 image: {
-                    url: "/public/images/pic2.png"
+                    url: "../pic/pic2.png"
                 },
                 material: 2
             },
@@ -47,7 +48,7 @@ const products = {
                     current_price: 75
                 },
                 image: {
-                    url: "/public/images/pic3.png"
+                    url: "../pic/pic3.png"
                 },
                 material: 2
             },
@@ -60,7 +61,7 @@ const products = {
                     current_price: 200
                 },
                 image: {
-                    url: "/public/images/pic4.png"
+                    url: "../pic/pic4.png"
                 },
                 material: 2
             },
@@ -73,7 +74,7 @@ const products = {
                     current_price: 720
                 },
                 image: {
-                    url: "/public/images/pic1.png"
+                    url: "../pic/pic1.png"
                 },
                 material: 1
             },
@@ -86,7 +87,7 @@ const products = {
                     current_price: 355.555
                 },
                 image: {
-                    url: "/public/images/pic2.png"
+                    url: "../pic/pic2.png"
                 },
                 material: 2
             },
@@ -99,7 +100,7 @@ const products = {
                     current_price: 75
                 },
                 image: {
-                    url: "/public/images/pic3.png"
+                    url: "../pic/pic3.png"
                 },
                 material: 2
             },
@@ -112,7 +113,7 @@ const products = {
                     current_price: 900
                 },
                 image: {
-                    url: "/public/images/pic4.png"
+                    url: "../pic/pic4.png"
                 },
                 material: 2
             }

@@ -6,12 +6,12 @@
     name: 'BreadCrumbs',
 
     computed: {
-      routes(): Array<object> | false {
-        let breadCrumbs: Array<object> = [];
+      routes(): Array<{name: string, path: string, component: object}> | false {
+        let breadCrumbs: Array<{name: string, path: string, component: object}> | false = [];
 
         if (this.$route.matched.length) {
           let routes: any = this.$router.options.routes;
-          for (let key: number in routes) {
+          for (let key in routes) {
             if (this.$route.fullPath.includes(routes[key].path)) {
               breadCrumbs.push(routes[key])
             }

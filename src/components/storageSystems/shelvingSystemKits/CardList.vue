@@ -15,7 +15,7 @@ export default defineComponent({
       filter:    'products/getFilter',
     }),
 
-    proccessedItems() {
+    processedItems() {
       let sortList      = this.getSortItems(this.items);
       let filteredList  = this.getFilteredItems(sortList);
 
@@ -60,7 +60,7 @@ export default defineComponent({
 
 <template>
   <main class="card-list">
-    <template v-for="(item, key) in proccessedItems" :key="key">
+    <template v-for="item in processedItems" :key="item.id">
       <CardItem :item="item"/>
     </template>
   </main>

@@ -1,11 +1,11 @@
-<script lang="ts">
+<script lang="js">
 import {defineComponent} from "vue";
 import TheFilter  from "./TheFilter.vue";
 import TheHeader  from "./TheHeader.vue";
 import TheContent from "./TheContent.vue";
 import TheFooter  from "./TheFooter.vue";
 
-import {mapActions, mapGetters} from "vuex";
+import { mapActions } from "vuex";
 
 export default defineComponent({
   name: 'TheBody',

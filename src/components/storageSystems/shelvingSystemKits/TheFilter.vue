@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="js">
 import {defineComponent} from "vue";
 import FilterItem from "./FilterItem.vue";
 import SortItem   from "./SortItem.vue";

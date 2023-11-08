@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="js">
 import {defineComponent} from "vue";
 import {mapGetters, mapMutations} from "vuex";
 
@@ -28,12 +28,11 @@ export default defineComponent({
     }),
 
     sort: {
-      get(): string {
-        const priceSort: string = this.getSort('price');
-        return priceSort;
+      get() {
+        return this.getSort('price');
       },
 
-      set(new_sort: string) {
+      set(new_sort) {
         this.setSort({id: 'price', value: new_sort});
       }
     }

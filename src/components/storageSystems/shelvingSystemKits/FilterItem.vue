@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="js">
 import {defineComponent} from "vue";
 import {mapGetters, mapMutations} from "vuex";
 
@@ -11,11 +11,11 @@ export default defineComponent({
     }),
 
     filter: {
-      get(): number {
+      get() {
         return this.getFilter('material')
       },
 
-      set(new_filter: number) {
+      set(new_filter) {
         this.setFilter({id: 'material', value: new_filter})
       }
     }
