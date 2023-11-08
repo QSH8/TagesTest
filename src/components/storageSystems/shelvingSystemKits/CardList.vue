@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="js">
 import {defineComponent} from "vue";
 import CardItem from "@/components/storageSystems/shelvingSystemKits/CardItem.vue";
 import {mapGetters} from "vuex";
@@ -11,13 +11,13 @@ export default defineComponent({
     ...mapGetters({
       items:     'products/getAllItems',
       materials: 'products/getAllMaterials',
-      sort:     'products/getSort',
-      filter:   'products/getFilter',
+      sort:      'products/getSort',
+      filter:    'products/getFilter',
     }),
 
-    proccessedItems(): Array<object> {
-      let sortList:     Array<object> = this.getSortItems(this.items);
-      let filteredList: Array<object> = this.getFilteredItems(sortList);
+    proccessedItems() {
+      let sortList      = this.getSortItems(this.items);
+      let filteredList  = this.getFilteredItems(sortList);
 
       return filteredList;
     }
@@ -28,8 +28,8 @@ export default defineComponent({
      * Применение сортировки, указанной во Vuex
      * @param sort
      */
-    getSortItems(items: Array<object>): Array<object> {
-      let sort:  string        = this.sort('price');
+    getSortItems(items) {
+      let sort = this.sort('price');
 
       if (sort === 'ascend') {
         return [...items].sort((a, b) => a.price.current_price - b.price.current_price);
@@ -44,10 +44,10 @@ export default defineComponent({
 
     /**
      * Применение сортировки, указанной во Vuex
-     * @param filter
+     * @param items
      */
-    getFilteredItems(items: Array<object>): Array<object> {
-      let filter: number = this.filter('material');
+    getFilteredItems(items) {
+      let filter = this.filter('material');
 
       return items.filter(item => item.material === filter);
     }
