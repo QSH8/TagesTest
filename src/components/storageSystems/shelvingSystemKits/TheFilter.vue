@@ -56,7 +56,7 @@ export default defineComponent({
 
  }
 
- @media  (max-width: 992px) {
+ @media  (max-width: 768px) {
    .filter {
      flex-direction: column;
    }

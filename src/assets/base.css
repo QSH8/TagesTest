@@ -9,8 +9,12 @@
   margin: 0;
   font-weight: normal;
 }
-app {
 
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
 }
 
 body {
@@ -27,4 +31,10 @@ button {
 p {
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 396px) {
+  #app {
+    display: block;
+  }
 }

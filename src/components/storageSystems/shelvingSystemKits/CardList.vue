@@ -74,4 +74,10 @@ export default defineComponent({
     flex-wrap: wrap;
     gap: 40px
   }
+
+  @media (max-width: 992px) {
+    .card-list {
+      flex-direction: column;
+    }
+  }
 </style>
