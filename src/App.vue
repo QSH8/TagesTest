@@ -23,13 +23,14 @@ import BreadCrumbs   from "@/components/BreadCrumbs.vue";
 
 @media (max-width: 1700px) {
   .wrapper {
-    padding: 32px 108px 0 108px;
+    padding: 32px 0 0 216px;
   }
 }
 
 @media (max-width: 992px) {
   .wrapper {
     display: flex;
+    padding: 32px 0 0 0;
     justify-content: center;
     flex-direction: column;
   }
